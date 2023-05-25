@@ -9,10 +9,11 @@ import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import CommentIcon from '@mui/icons-material/Comment';
 import { ITodo } from '../../store/todosSlice/todosSlice';
+import { changeStatus } from '../../store/todosSlice/todosSlice';
+import { useDispatch } from 'react-redux';
 const TodoList: FC = () => {
   const todos = useSelector((state: any) => state.todos.todoItems);
-  console.log(todos);
-
+  const dispatch = useDispatch();
   return (
     <List>
       {todos.map(({ id, name, completed }: ITodo) => (
@@ -27,9 +28,20 @@ const TodoList: FC = () => {
         >
           <ListItemButton>
             <ListItemIcon>
-              <Checkbox edge="start" checked={completed} tabIndex={-1} />
+              <Checkbox
+                onChange={() => dispatch(changeStatus(id))}
+                edge="start"
+                checked={completed}
+                tabIndex={-1}
+              />
             </ListItemIcon>
-            <ListItemText>{name}</ListItemText>
+            <ListItemText
+              sx={{
+                textDecoration: completed ? 'line-through' : '',
+              }}
+            >
+              {name}
+            </ListItemText>
           </ListItemButton>
         </ListItem>
       ))}

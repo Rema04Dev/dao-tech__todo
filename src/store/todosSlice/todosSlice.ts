@@ -11,18 +11,7 @@ export interface ITodosState {
 }
 
 const initialState: ITodosState = {
-  todoItems: [
-    {
-      id: 1,
-      name: 'Fry meat',
-      completed: false,
-    },
-    {
-      id: 2,
-      name: 'Call Lika',
-      completed: true,
-    },
-  ],
+  todoItems: [],
 };
 
 const todosSlice = createSlice({
@@ -32,8 +21,16 @@ const todosSlice = createSlice({
     addTodo: (state, action) => {
       state.todoItems.push(action.payload);
     },
+    changeStatus: (state, action) => {
+      const newTodos = state.todoItems.map((todo) =>
+        todo.id === action.payload
+          ? { ...todo, completed: !todo.completed }
+          : todo
+      );
+      state.todoItems = newTodos;
+    },
   },
 });
 
-export const { addTodo } = todosSlice.actions;
+export const { addTodo, changeStatus } = todosSlice.actions;
 export default todosSlice.reducer;

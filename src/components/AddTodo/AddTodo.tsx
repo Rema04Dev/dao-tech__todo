@@ -1,9 +1,25 @@
 import { FC } from 'react';
 import { TextField, Button, Grid, Box } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { addTodo } from '../../store/todosSlice/todosSlice';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import _ from 'lodash';
 const AddTodo: FC = () => {
-  const { register, handleSubmit, control } = useForm();
-  const onSubmit = (values: any) => console.log(values);
+  const dispatch = useDispatch();
+  const { register, handleSubmit, control, reset } = useForm();
+  const onSubmit = (values: any) => {
+    console.log(values);
+    const todo = {
+      id: _.uniqueId(),
+      name: values.todo,
+      completed: false,
+    };
+    dispatch(addTodo(todo));
+    reset({
+      todo: '',
+    });
+  };
   return (
     <Box
       component="form"
