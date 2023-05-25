@@ -7,7 +7,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
-import CommentIcon from '@mui/icons-material/Comment';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { ITodo } from '../../store/todosSlice/todosSlice';
 import { changeStatus } from '../../store/todosSlice/todosSlice';
 import { useDispatch } from 'react-redux';
@@ -21,7 +21,7 @@ const TodoList: FC = () => {
           key={id}
           secondaryAction={
             <IconButton edge="end" aria-label="comments">
-              <CommentIcon />
+              <CloseOutlinedIcon />
             </IconButton>
           }
           disablePadding
