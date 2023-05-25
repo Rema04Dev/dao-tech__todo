@@ -1,10 +1,19 @@
 import { FC } from 'react';
-import { useSelector } from 'react-redux';
 import AddTodo from './components/AddTodo/AddTodo';
+import TodoList from './components/TodoList/TodoList';
 const App: FC = () => {
-  const todos = useSelector((state) => state);
-  console.log(todos);
-  return <AddTodo />;
+  return (
+    <div
+      style={{
+        width: '50%',
+        textAlign: 'center',
+        margin: '0 auto',
+      }}
+    >
+      <AddTodo />
+      <TodoList />
+    </div>
+  );
 };
 
 export default App;

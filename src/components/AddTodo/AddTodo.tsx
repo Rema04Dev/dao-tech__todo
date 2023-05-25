@@ -5,9 +5,13 @@ const AddTodo: FC = () => {
   const { register, handleSubmit, control } = useForm();
   const onSubmit = (values: any) => console.log(values);
   return (
-    <Box component="form" onSubmit={handleSubmit(onSubmit)}>
-      <Grid container>
-        <Grid item>
+    <Box
+      component="form"
+      onSubmit={handleSubmit(onSubmit)}
+      sx={{ width: '100%' }}
+    >
+      <Grid container sx={{ width: '100%' }}>
+        <Grid item sx={{ width: '80%' }}>
           <Controller
             name="todo"
             control={control}
@@ -17,6 +21,7 @@ const AddTodo: FC = () => {
               formState,
             }) => (
               <TextField
+                fullWidth
                 {...register('todo')}
                 autoComplete="off"
                 label="Enter a new task"
@@ -25,7 +30,7 @@ const AddTodo: FC = () => {
             )}
           />
         </Grid>
-        <Grid item>
+        <Grid item sx={{ width: '20%' }}>
           <Button
             type="submit"
             fullWidth

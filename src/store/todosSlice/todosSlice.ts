@@ -1,17 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface ITodo {
+export interface ITodo {
   id: number;
   name: string;
   completed: boolean;
 }
 
-interface ITodosState {
+export interface ITodosState {
   todoItems: Array<ITodo>;
 }
 
 const initialState: ITodosState = {
-  todoItems: [],
+  todoItems: [
+    {
+      id: 1,
+      name: 'Fry meat',
+      completed: false,
+    },
+    {
+      id: 2,
+      name: 'Call Lika',
+      completed: true,
+    },
+  ],
 };
 
 const todosSlice = createSlice({
