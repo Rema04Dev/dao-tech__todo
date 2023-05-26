@@ -6,12 +6,25 @@ export interface ITodo {
   completed: boolean;
 }
 
+export interface IFilterButton {
+  id: number;
+  name: string;
+}
+
 export interface ITodosState {
   todoItems: Array<ITodo>;
+  filterButtons: Array<IFilterButton>;
+  activeButtonId: number;
 }
 
 const initialState: ITodosState = {
   todoItems: [],
+  filterButtons: [
+    { id: 1, name: 'All' },
+    { id: 2, name: 'Current' },
+    { id: 3, name: 'Completed' },
+  ],
+  activeButtonId: 1,
 };
 
 const todosSlice = createSlice({
@@ -29,8 +42,12 @@ const todosSlice = createSlice({
       );
       state.todoItems = newTodos;
     },
+    setActiveFilterButton: (state, action) => {
+      state.activeButtonId = action.payload;
+    },
   },
 });
 
-export const { addTodo, changeStatus } = todosSlice.actions;
+export const { addTodo, changeStatus, setActiveFilterButton } =
+  todosSlice.actions;
 export default todosSlice.reducer;
