@@ -46,9 +46,15 @@ const todosSlice = createSlice({
     setActiveFilterButton: (state, action) => {
       state.activeButtonId = action.payload;
     },
+    removeTodoItem: (state, action) => {
+      const newTodos = state.todoItems.filter(
+        (todo) => todo.id !== action.payload
+      );
+      state.todoItems = newTodos;
+    },
   },
 });
 
-export const { addTodo, changeStatus, setActiveFilterButton } =
+export const { addTodo, changeStatus, setActiveFilterButton, removeTodoItem } =
   todosSlice.actions;
 export default todosSlice.reducer;
