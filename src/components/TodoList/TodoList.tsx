@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { List } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { IFilterButton, ITodo } from '../../store/todosSlice/todosSlice';
 import TodoItem from '../TodoItem/TodoItem';
+import { IFilterButton, ITodo } from '../../types';
 
 const TodoList: FC = () => {
   const { todoItems, activeButtonId, filterButtons } = useSelector(
@@ -29,6 +29,7 @@ const TodoList: FC = () => {
     }
     return todos;
   };
+
   return (
     <List>
       {getTodos().map((todoItem: ITodo) => (

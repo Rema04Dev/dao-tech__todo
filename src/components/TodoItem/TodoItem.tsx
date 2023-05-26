@@ -8,17 +8,19 @@ import {
   IconButton,
 } from '@mui/material';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-import { ITodo } from '../../store/todosSlice/todosSlice';
 import {
   changeStatus,
   removeTodoItem,
 } from '../../store/todosSlice/todosSlice';
 import { useDispatch } from 'react-redux';
+import { ITodo } from '../../types';
+
 interface ITodoItemProps {
   todoItem: ITodo;
 }
 const TodoItem: FC<ITodoItemProps> = ({ todoItem }) => {
   const dispatch = useDispatch();
+
   return (
     <ListItem
       secondaryAction={

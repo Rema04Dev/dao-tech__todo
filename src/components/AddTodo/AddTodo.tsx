@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import _ from 'lodash';
+
 const AddTodo: FC = () => {
   const dispatch = useDispatch();
   const schema = Yup.object().shape({
@@ -14,13 +15,7 @@ const AddTodo: FC = () => {
       .max(20, 'Max length of name is 20 characters')
       .required('Task name is required'),
   });
-  const {
-    register,
-    handleSubmit,
-    control,
-    reset,
-    formState: { errors },
-  } = useForm({
+  const { register, handleSubmit, control, reset } = useForm({
     resolver: yupResolver(schema),
   });
   const onSubmit = (values: any) => {
@@ -35,6 +30,7 @@ const AddTodo: FC = () => {
       todo: '',
     });
   };
+
   return (
     <Box
       component="form"
