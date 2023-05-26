@@ -9,6 +9,7 @@ export interface ITodo {
 export interface IFilterButton {
   id: number;
   name: string;
+  type: 'all' | 'current' | 'completed';
 }
 
 export interface ITodosState {
@@ -20,9 +21,9 @@ export interface ITodosState {
 const initialState: ITodosState = {
   todoItems: [],
   filterButtons: [
-    { id: 1, name: 'All' },
-    { id: 2, name: 'Current' },
-    { id: 3, name: 'Completed' },
+    { id: 1, name: 'All', type: 'all' },
+    { id: 2, name: 'Current', type: 'current' },
+    { id: 3, name: 'Completed', type: 'completed' },
   ],
   activeButtonId: 1,
 };
