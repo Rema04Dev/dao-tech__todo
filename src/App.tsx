@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import AddTodo from './components/AddTodo/AddTodo';
 import TodoList from './components/TodoList/TodoList';
-import Filter from './components/Filter/Filter';
 import { useSelector } from 'react-redux';
+import Info from './components/Info/Info';
 const App: FC = () => {
   const todos = useSelector((state: any) => state.todos.todoItems);
   return (
@@ -14,7 +14,7 @@ const App: FC = () => {
       }}
     >
       <AddTodo />
-      {todos.length ? <Filter /> : null}
+      {todos.length ? <Info /> : null}
       <TodoList />
     </div>
   );
