@@ -10,7 +10,7 @@ const Badges: FC = () => {
   const currentTodos = todoItems.filter((todo: ITodo) => !todo.completed);
   return (
     <>
-      <Badge color="secondary" badgeContent={currentTodos.length}>
+      <Badge color="secondary" badgeContent={currentTodos.length} showZero>
         <AssignmentLateIcon />
       </Badge>
       <Badge color="secondary" badgeContent={completedTodos.length} showZero>
