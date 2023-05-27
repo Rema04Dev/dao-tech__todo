@@ -1,24 +1,24 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { ITodosState } from '../../types';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ITodo, ITodosState } from '../../types';
 
 const initialState: ITodosState = {
   todoItems: [],
   filterButtons: [
-    { id: 1, name: 'All', type: 'all' },
-    { id: 2, name: 'Current', type: 'current' },
-    { id: 3, name: 'Completed', type: 'completed' },
+    { id: '1', name: 'All', type: 'all' },
+    { id: '2', name: 'Current', type: 'current' },
+    { id: '3', name: 'Completed', type: 'completed' },
   ],
-  activeButtonId: 1,
+  activeButtonId: '1',
 };
 
 const todosSlice = createSlice({
   name: 'todos',
   initialState,
   reducers: {
-    addTodo: (state, action) => {
+    addTodo: (state, action: PayloadAction<ITodo>) => {
       state.todoItems.push(action.payload);
     },
-    changeStatus: (state, action) => {
+    changeStatus: (state, action: PayloadAction<string>) => {
       const newTodos = state.todoItems.map((todo) =>
         todo.id === action.payload
           ? { ...todo, completed: !todo.completed }
@@ -26,10 +26,10 @@ const todosSlice = createSlice({
       );
       state.todoItems = newTodos;
     },
-    setActiveFilterButton: (state, action) => {
+    setActiveFilterButton: (state, action: PayloadAction<string>) => {
       state.activeButtonId = action.payload;
     },
-    removeTodoItem: (state, action) => {
+    removeTodoItem: (state, action: PayloadAction<string>) => {
       const newTodos = state.todoItems.filter(
         (todo) => todo.id !== action.payload
       );

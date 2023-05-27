@@ -1,19 +1,21 @@
 import { FC } from 'react';
 import { List } from '@mui/material';
-import { useSelector } from 'react-redux';
 import TodoItem from '../TodoItem/TodoItem';
 import { IFilterButton, ITodo } from '../../types';
+import { useAppSelector } from '../../hooks';
 
 const TodoList: FC = () => {
-  const { todoItems, activeButtonId, filterButtons } = useSelector(
-    (state: any) => state.todos
+  const { todoItems, activeButtonId, filterButtons } = useAppSelector(
+    (state) => state.todos
   );
+
   const activeButton = filterButtons.find(
     (btn: IFilterButton) => btn.id === activeButtonId
   );
 
   const getTodos = () => {
     let todos: Array<ITodo> = [];
+    // @ts-ignore #FIXME
     switch (activeButton.type) {
       case 'all':
         todos = todoItems;

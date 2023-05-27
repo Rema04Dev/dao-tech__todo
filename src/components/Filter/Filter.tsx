@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import { useSelector } from 'react-redux';
 import { Stack } from '@mui/material';
 import FilterButtonItem from '../FilterButtonItem/FilterButtonItem';
 import { IFilterButton } from '../../types';
+import { useAppSelector } from '../../hooks';
 
 const Filter: FC = () => {
-  const { filterButtons } = useSelector((state: any) => state.todos);
+  const { filterButtons } = useAppSelector((state) => state.todos);
 
   return (
     <Stack direction="row">

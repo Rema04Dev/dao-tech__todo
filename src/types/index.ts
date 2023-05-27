@@ -1,11 +1,11 @@
 export interface ITodo {
-  id: number;
+  id: string;
   name: string;
   completed: boolean;
 }
 
 export interface IFilterButton {
-  id: number;
+  id: string;
   name: string;
   type: 'all' | 'current' | 'completed';
 }
@@ -13,5 +13,5 @@ export interface IFilterButton {
 export interface ITodosState {
   todoItems: Array<ITodo>;
   filterButtons: Array<IFilterButton>;
-  activeButtonId: number;
+  activeButtonId: string;
 }

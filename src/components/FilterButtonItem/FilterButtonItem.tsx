@@ -1,16 +1,16 @@
 import { FC } from 'react';
 import { setActiveFilterButton } from '../../store/todosSlice/todosSlice';
 import { Button } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
 import { IFilterButton } from '../../types';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 
 interface IFilterButtonItemProps {
   item: IFilterButton;
 }
 
 const FilterButtonItem: FC<IFilterButtonItemProps> = ({ item }) => {
-  const dispatch = useDispatch();
-  const { activeButtonId } = useSelector((state: any) => state.todos);
+  const dispatch = useAppDispatch();
+  const { activeButtonId } = useAppSelector((state: any) => state.todos);
   const variant = item.id === activeButtonId ? 'contained' : 'text';
   return (
     <Button

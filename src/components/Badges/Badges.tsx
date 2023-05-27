@@ -2,11 +2,10 @@ import { FC } from 'react';
 import { Badge } from '@mui/material';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import AssignmentLateIcon from '@mui/icons-material/AssignmentLate';
-import { useSelector } from 'react-redux';
 import { ITodo } from '../../types';
-
+import { useAppSelector } from '../../hooks';
 const Badges: FC = () => {
-  const { todoItems } = useSelector((state: any) => state.todos);
+  const { todoItems } = useAppSelector((state) => state.todos);
   const completedTodos = todoItems.filter((todo: ITodo) => todo.completed);
   const currentTodos = todoItems.filter((todo: ITodo) => !todo.completed);
 

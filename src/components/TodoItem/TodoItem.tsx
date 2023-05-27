@@ -12,14 +12,15 @@ import {
   changeStatus,
   removeTodoItem,
 } from '../../store/todosSlice/todosSlice';
-import { useDispatch } from 'react-redux';
 import { ITodo } from '../../types';
+import { useAppDispatch } from '../../hooks';
 
 interface ITodoItemProps {
   todoItem: ITodo;
 }
+
 const TodoItem: FC<ITodoItemProps> = ({ todoItem }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <ListItem

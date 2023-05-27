@@ -1,15 +1,15 @@
 import { FC } from 'react';
 import { TextField, Button, Grid, Box } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
 import { addTodo } from '../../store/todosSlice/todosSlice';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import _ from 'lodash';
+import { useAppDispatch } from '../../hooks';
 
 const AddTodo: FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const schema = Yup.object().shape({
     todo: Yup.string()
       .max(20, 'Max length of name is 20 characters')
