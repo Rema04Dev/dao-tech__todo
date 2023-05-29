@@ -32,9 +32,11 @@ const TodoList: FC = () => {
     return todos;
   };
 
+  const todos = getTodos();
+
   return (
     <List>
-      {getTodos().map((todoItem: ITodo) => (
+      {todos.map((todoItem: ITodo) => (
         <TodoItem key={todoItem.id} todoItem={todoItem} />
       ))}
     </List>

@@ -53,6 +53,7 @@
     ]
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.194"
+    "@types/lodash": "^4.14.194",
+    "redux-mock-store": "^1.5.4"
   }
 }
