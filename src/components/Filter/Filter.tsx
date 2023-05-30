@@ -10,7 +10,7 @@ const Filter: FC = () => {
   return (
     <Stack direction="row">
       {filterButtons.map((filterButton: IFilterButton) => (
-        <FilterButtonItem key={filterButton.id} item={filterButton} />
+        <FilterButtonItem key={filterButton.id} btn={filterButton} />
       ))}
     </Stack>
   );

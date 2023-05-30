@@ -5,19 +5,31 @@ import { IFilterButton } from '../../types';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
 interface IFilterButtonItemProps {
-  item: IFilterButton;
+  btn: IFilterButton;
 }
 
-const FilterButtonItem: FC<IFilterButtonItemProps> = ({ item }) => {
+const FilterButtonItem: FC<IFilterButtonItemProps> = ({ btn }) => {
   const dispatch = useAppDispatch();
-  const { activeType } = useAppSelector((state) => state.todos);
-  const variant = item.type === activeType ? 'contained' : 'text';
+  const { activeType, todoItems } = useAppSelector((state) => state.todos);
+  const currentTodos = todoItems.filter(({ completed }) => !completed);
+  const completedTodos = todoItems.filter(({ completed }) => completed);
+  const variant = btn.type === activeType ? 'contained' : 'text';
+  const isDisabled = () => {
+    const map = {
+      all: todoItems.length > 0,
+      current: currentTodos.length > 0,
+      completed: completedTodos.length > 0,
+    };
+    return map[btn.type];
+  };
+
   return (
     <Button
+      disabled={!isDisabled()}
       variant={variant}
-      onClick={() => dispatch(setActiveFilterButton(item.type))}
+      onClick={() => dispatch(setActiveFilterButton(btn.type))}
     >
-      {item.name}
+      {btn.name}
     </Button>
   );
 };
