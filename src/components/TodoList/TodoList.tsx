@@ -2,9 +2,12 @@ import { FC } from 'react';
 import { List } from '@mui/material';
 import TodoItem from '../TodoItem/TodoItem';
 import { IFilterButton, ITodo } from '../../types';
-import { useAppSelector } from '../../hooks';
+import { useAppSelector, useAppDispatch } from '../../hooks';
+import { setActiveFilterButton } from '../../store/todosSlice/todosSlice';
 
 const TodoList: FC = () => {
+  const dispatch = useAppDispatch();
+
   const { todoItems, filterButtons, activeType } = useAppSelector(
     (state) => state.todos
   );
@@ -34,6 +37,9 @@ const TodoList: FC = () => {
 
   const todos = getTodos();
 
+  if (todos.length === 0) {
+    dispatch(setActiveFilterButton('all'));
+  }
   return (
     <List>
       {todos.map((todoItem: ITodo) => (
