@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ITodo, ITodosState } from '../../types';
+import { FilterButtonType, ITodo, ITodosState } from '../../types';
 
 const initialState: ITodosState = {
   todoItems: [],
@@ -8,7 +8,7 @@ const initialState: ITodosState = {
     { id: '2', name: 'Current', type: 'current' },
     { id: '3', name: 'Completed', type: 'completed' },
   ],
-  activeButtonId: '1',
+  activeType: 'all',
 };
 
 const todosSlice = createSlice({
@@ -26,8 +26,8 @@ const todosSlice = createSlice({
       );
       state.todoItems = newTodos;
     },
-    setActiveFilterButton: (state, action: PayloadAction<string>) => {
-      state.activeButtonId = action.payload;
+    setActiveFilterButton: (state, action: PayloadAction<FilterButtonType>) => {
+      state.activeType = action.payload;
     },
     removeTodoItem: (state, action: PayloadAction<string>) => {
       const newTodos = state.todoItems.filter(

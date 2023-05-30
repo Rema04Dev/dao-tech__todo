@@ -5,12 +5,12 @@ import { IFilterButton, ITodo } from '../../types';
 import { useAppSelector } from '../../hooks';
 
 const TodoList: FC = () => {
-  const { todoItems, activeButtonId, filterButtons } = useAppSelector(
+  const { todoItems, filterButtons, activeType } = useAppSelector(
     (state) => state.todos
   );
 
   const activeButton = filterButtons.find(
-    (btn: IFilterButton) => btn.id === activeButtonId
+    (btn: IFilterButton) => btn.type === activeType
   );
 
   const getTodos = () => {

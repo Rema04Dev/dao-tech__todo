@@ -4,14 +4,16 @@ export interface ITodo {
   completed: boolean;
 }
 
+export type FilterButtonType = 'all' | 'current' | 'completed';
+
 export interface IFilterButton {
   id: string;
   name: string;
-  type: 'all' | 'current' | 'completed';
+  type: FilterButtonType;
 }
 
 export interface ITodosState {
   todoItems: Array<ITodo>;
   filterButtons: Array<IFilterButton>;
-  activeButtonId: string;
+  activeType: FilterButtonType;
 }

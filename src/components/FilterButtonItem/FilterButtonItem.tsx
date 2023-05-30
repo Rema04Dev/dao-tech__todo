@@ -10,12 +10,12 @@ interface IFilterButtonItemProps {
 
 const FilterButtonItem: FC<IFilterButtonItemProps> = ({ item }) => {
   const dispatch = useAppDispatch();
-  const { activeButtonId } = useAppSelector((state: any) => state.todos);
-  const variant = item.id === activeButtonId ? 'contained' : 'text';
+  const { activeType } = useAppSelector((state) => state.todos);
+  const variant = item.type === activeType ? 'contained' : 'text';
   return (
     <Button
       variant={variant}
-      onClick={() => dispatch(setActiveFilterButton(item.id))}
+      onClick={() => dispatch(setActiveFilterButton(item.type))}
     >
       {item.name}
     </Button>
