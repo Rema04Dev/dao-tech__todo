@@ -39,7 +39,7 @@ const FilterButtonItem: FC<IFilterButtonItemProps> = ({
   return (
     <>
       {/* FIXME */}
-      <Badge badgeContent={badgeContent} /*color={color}*/>
+      <Badge badgeContent={badgeContent} /*color={color}*/ color="secondary">
         <Button
           disabled={!isDisabled()}
           variant={variant}
