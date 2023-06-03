@@ -15,11 +15,37 @@ const darkTheme = createTheme({
   palette: {
     mode: 'dark',
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 200, // 600
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+      mobile: 0,
+      tablet: 240, // 640
+      laptop: 1024,
+      desktop: 1200,
+    },
+  },
 });
 
 const lightTheme = createTheme({
   palette: {
     mode: 'light',
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 200, // 600
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+      mobile: 0,
+      tablet: 240, // 640
+      laptop: 1024,
+      desktop: 1200,
+    },
   },
 });
 
@@ -36,7 +62,17 @@ const App: FC = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Header toggleTheme={toggleTheme} />
-      <Container sx={{ mt: '20px' }}>
+      <Container
+        sx={{
+          mt: '20px',
+          width: {
+            mobile: '100%',
+            tablet: '75%',
+            laptop: '50%',
+            desktop: '50%',
+          },
+        }}
+      >
         <AddTodo />
         {todos.length ? <Info /> : null}
         <TodoList />

@@ -1,7 +1,6 @@
 import { Stack } from '@mui/material';
 import { FC } from 'react';
 import Filter from '../Filter/Filter';
-import Badges from '../Badges/Badges';
 
 const Info: FC = () => {
   return (
@@ -13,9 +12,6 @@ const Info: FC = () => {
       }}
     >
       <Filter />
-      <div>
-        <Badges />
-      </div>
     </Stack>
   );
 };

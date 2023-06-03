@@ -15,8 +15,13 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
     >
       <Box
         sx={{
-          width: '80%',
           m: '0 auto',
+          width: {
+            mobile: '100%',
+            tablet: '75%',
+            laptop: '50%',
+            desktop: '50%',
+          },
         }}
       >
         <Stack direction="row" justifyContent="space-between">
