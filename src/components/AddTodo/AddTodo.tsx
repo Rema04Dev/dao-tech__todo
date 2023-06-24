@@ -4,8 +4,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { addTodo } from '../../store/todosSlice/todosSlice';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import _ from 'lodash';
+import { uniqueId } from 'lodash';
 import { useAppDispatch } from '../../hooks';
 
 const AddTodo: FC = () => {
@@ -15,13 +14,15 @@ const AddTodo: FC = () => {
       .max(20, 'Max length of name is 20 characters')
       .required('Task name is required'),
   });
+
   const { register, handleSubmit, control, reset } = useForm({
     resolver: yupResolver(schema),
   });
+
   const onSubmit = (values: any) => {
     console.log(values);
     const todo = {
-      id: _.uniqueId(),
+      id: uniqueId(),
       name: values.todo,
       completed: false,
     };
@@ -67,7 +68,7 @@ const AddTodo: FC = () => {
             fullWidth
             variant="contained"
             sx={{
-              height: '100%',
+              minHeight: '56px',
             }}
           >
             Add
